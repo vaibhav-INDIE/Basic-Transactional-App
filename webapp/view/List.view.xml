@@ -8,66 +8,79 @@
         title="Products">
 
         <headerContent>
+
+            <VBox
+                class="sapUiSmallMargin"
+                id="demo.productapp.productapp::Menu--one">
+                <Button
+                    id="button"
+                    text="View Actions"
+                    press="onPress"
+                    ariaHasPopup="Menu"/>
+            </VBox>
+
             <Button
                 id="demo.productapp.productapp::List--BtnAdd"
                 text="Add Product"
                 type="Emphasized"
                 press=".onAdd"/>
+
             <Button
                 id="demo.productapp.productapp::List--BtnDelete"
                 text="Delete Selected"
                 type="Negative"
                 press=".onDelete"/>
+
         </headerContent>
 
         <content>
             <Table
                 id="demo.productapp.productapp::List--Table"
-                mode="SingleSelectLeft"
+                mode="MultiSelect"
                 items="{path: 'data>/products'}">
 
                 <columns>
                     <Column id="demo.productapp.productapp::List--ColID">
-                        <Text id="demo.productapp.productapp::List--TxtColID" text="ID"/>
+                        <Text id="_IDGenText1" text="ID"/>
                     </Column>
 
                     <Column id="demo.productapp.productapp::List--ColName">
-                        <Text id="demo.productapp.productapp::List--TxtColName" text="Name"/>
+                        <Text id="_IDGenText2" text="Name"/>
                     </Column>
 
                     <Column id="demo.productapp.productapp::List--ColPrice">
-                        <Text id="demo.productapp.productapp::List--TxtColPrice" text="Price"/>
+                        <Text id="_IDGenText3" text="Price"/>
                     </Column>
 
                     <Column id="demo.productapp.productapp::List--ColStock">
-                        <Text id="demo.productapp.productapp::List--TxtColStock" text="Stock"/>
+                        <Text id="_IDGenText4" text="Stock"/>
                     </Column>
 
                     <Column id="demo.productapp.productapp::List--ColDetails">
-                        <Text id="demo.productapp.productapp::List--TxtColDetails"/>
+                        <Text id="_IDGenText5" text=""/>
                     </Column>
                 </columns>
 
                 <items>
                     <ColumnListItem id="demo.productapp.productapp::List--RowTemplate">
                         <cells>
-                            <Text id="demo.productapp.productapp::List--TxtID" text="{data>id}"/>
-                            <Text id="demo.productapp.productapp::List--TxtName" text="{data>name}"/>
-                            <Text id="demo.productapp.productapp::List--TxtPrice" text="{data>price}"/>
-                            <Text id="demo.productapp.productapp::List--TxtStock" text="{data>stock}"/>
+                            <Text id="_IDGenText6" text="{data>id}"/>
+                            <Text id="_IDGenText7" text="{data>name}"/>
+                            <Text id="_IDGenText8" text="{data>price}"/>
+                            <Text id="_IDGenText9" text="{data>stock}"/>
 
                             <Button
                                 id="demo.productapp.productapp::List--BtnRowDetails"
                                 text="View"
                                 type="Transparent"
-                                press=".onRowDetails"/> 
+                                press=".onRowDetails"/>
                         </cells>
                     </ColumnListItem>
                 </items>
-                
 
             </Table>
         </content>
 
     </Page>
+
 </mvc:View>

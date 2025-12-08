@@ -1,50 +1,86 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller",
-  "sap/m/MessageToast"
-], function (Controller, MessageToast) {
-  "use strict";
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/ui/core/Fragment"
+], function (Controller, MessageToast, Fragment) {
+    "use strict";
 
-  return Controller.extend("demo.productapp.productapp.controller.List", {
+    return Controller.extend("demo.productapp.productapp.controller.List", {
 
-    _getRouter: function () {
-      return this.getOwnerComponent().getRouter();
-    },
+        onSelectAll: function () {
+            var oTable = this.byId("demo.productapp.productapp::List--Table");
+            oTable.selectAll();
 
-    onAdd: function () {
-      this._getRouter().navTo("Create");
-    },
+            if (this._pMenu) {
+                this._pMenu.then(function (oMenu) {
+                    oMenu.close();
+                });
+            }
+        },
 
-    onDelete: function () {
-      var oTable = this.byId("demo.productapp.productapp::List--Table");
-      var oItem = oTable.getSelectedItem();
-      if (!oItem) {
-        MessageToast.show("Select a product first");
-        return;
-      }
+        onPress: function () {
+            var oView = this.getView(),
+                oButton = oView.byId("button");
 
-      var oCtx = oItem.getBindingContext("data");
-      var sPath = oCtx.getPath();
-      var aParts = sPath.split("/");
-      var iIndex = parseInt(aParts[2], 10);
+            if (!this._oMenuFragment) {
+                this._oMenuFragment = Fragment.load({
+                    id: oView.getId("button"),
+                    name: "demo.productapp.productapp.view.Menu_one",
+                    controller: this
+                }).then(function (oMenu) {
+                    oMenu.openBy(oButton);
+                    this._oMenuFragment = oMenu;
+                    return this._oMenuFragment;
+                }.bind(this));
 
-      var oModel = oCtx.getModel();
-      var aProducts = oModel.getProperty("/products");
-      aProducts.splice(iIndex, 1);
-      oModel.setProperty("/products", aProducts);
+            } else if (this._oMenuFragment.isOpen()) {
+                this._oMenuFragment.close();
 
-      MessageToast.show("Product deleted");
-    },
+            } else {
+                this._oMenuFragment.openBy(oButton);
+            }
+        },
 
-    onRowDetails: function (oEvent) {
-    var oBtn = oEvent.getSource();
-    var oItem = oBtn.getParent();                   
-    var oCtx = oItem.getBindingContext("data");
-    var sPath = oCtx.getPath();
-    var sIndex = sPath.split("/")[2];
+        _getRouter: function () {
+            return this.getOwnerComponent().getRouter();
+        },
 
-    this._getRouter().navTo("Detail", { index: sIndex });
-    } 
+        onAdd: function () {
+            this._getRouter().navTo("Create");
+        },
 
+        onDelete: function () {
+            var oTable = this.byId("demo.productapp.productapp::List--Table");
+            var oItem = oTable.getSelectedItem();
 
-  });
+            if (!oItem) {
+                MessageToast.show("Select a product first");
+                return;
+            }
+
+            var oCtx = oItem.getBindingContext("data");
+            var sPath = oCtx.getPath(); // "/products/2"
+            var aParts = sPath.split("/");
+            var iIndex = parseInt(aParts[2], 10);
+
+            var oModel = oCtx.getModel();
+            var aProducts = oModel.getProperty("/products");
+
+            aProducts.splice(iIndex, 1);
+            oModel.setProperty("/products", aProducts);
+
+            MessageToast.show("Product deleted");
+        },
+
+        onRowDetails: function (oEvent) {
+            var oBtn = oEvent.getSource();
+            var oItem = oBtn.getParent();
+            var oCtx = oItem.getBindingContext("data");
+
+            var sPath = oCtx.getPath();
+            var sIndex = sPath.split("/")[2];
+
+            this._getRouter().navTo("Detail", { index: sIndex });
+        }
+    });
 });
