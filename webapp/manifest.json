@@ -1,0 +1,111 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "demo.productapp.productapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.19.6",
+      "toolsId": "b430706a-603b-43d3-b170-931082ac61a5"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {}
+
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "demo.productapp.productapp.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "demo.productapp.productapp.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "List",
+          "pattern": "",
+          "target": "List"
+        },
+        {
+          "name": "Create",
+          "pattern": "create",
+          "target": "Create"
+        },
+        {
+          "name": "Detail",
+          "pattern": "detail/{index}",
+          "target": "Detail"
+        }
+      ],
+      "targets": {
+        "List": {
+          "viewName": "List"
+        },
+        "Create": {
+          "viewName": "Create"
+        },
+        "Detail": { 
+          "viewName": "Detail" 
+        }
+      }
+    },
+
+    "rootView": {
+      "viewName": "demo.productapp.productapp.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

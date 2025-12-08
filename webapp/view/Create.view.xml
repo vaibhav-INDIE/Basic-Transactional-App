@@ -1,0 +1,53 @@
+<mvc:View
+    controllerName="demo.productapp.productapp.controller.Create"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+
+    <Page
+        id="demo.productapp.productapp::Create--Page"
+        title="Create Product"
+        showNavButton="true"
+        navButtonPress=".onCancel">
+
+        <content>
+            <form:SimpleForm
+                id="demo.productapp.productapp::Create--Form"
+                editable="true">
+
+                <Label
+                    id="demo.productapp.productapp::Create--LblName"
+                    text="Product Name"/>
+                <Input
+                    id="demo.productapp.productapp::Create--InName"/>
+
+                <Label
+                    id="demo.productapp.productapp::Create--LblPrice"
+                    text="Price"/>
+                <Input
+                    id="demo.productapp.productapp::Create--InPrice"
+                    type="Number"/>
+
+                <Label
+                    id="demo.productapp.productapp::Create--LblStock"
+                    text="Stock"/>
+                <Input
+                    id="demo.productapp.productapp::Create--InStock"
+                    type="Number"/>
+
+            </form:SimpleForm>
+        </content>
+
+        <footer>
+            <Toolbar id="demo.productapp.productapp::Create--Toolbar">
+                <ToolbarSpacer id="demo.productapp.productapp::Create--Spacer"/>
+                <Button
+                    id="demo.productapp.productapp::Create--BtnSave"
+                    text="Save"
+                    type="Emphasized"
+                    press=".onSave"/>
+            </Toolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

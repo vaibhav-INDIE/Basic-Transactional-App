@@ -1,0 +1,73 @@
+<mvc:View
+    controllerName="demo.productapp.productapp.controller.List"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="demo.productapp.productapp::List--Page"
+        title="Products">
+
+        <headerContent>
+            <Button
+                id="demo.productapp.productapp::List--BtnAdd"
+                text="Add Product"
+                type="Emphasized"
+                press=".onAdd"/>
+            <Button
+                id="demo.productapp.productapp::List--BtnDelete"
+                text="Delete Selected"
+                type="Negative"
+                press=".onDelete"/>
+        </headerContent>
+
+        <content>
+            <Table
+                id="demo.productapp.productapp::List--Table"
+                mode="SingleSelectLeft"
+                items="{path: 'data>/products'}">
+
+                <columns>
+                    <Column id="demo.productapp.productapp::List--ColID">
+                        <Text id="demo.productapp.productapp::List--TxtColID" text="ID"/>
+                    </Column>
+
+                    <Column id="demo.productapp.productapp::List--ColName">
+                        <Text id="demo.productapp.productapp::List--TxtColName" text="Name"/>
+                    </Column>
+
+                    <Column id="demo.productapp.productapp::List--ColPrice">
+                        <Text id="demo.productapp.productapp::List--TxtColPrice" text="Price"/>
+                    </Column>
+
+                    <Column id="demo.productapp.productapp::List--ColStock">
+                        <Text id="demo.productapp.productapp::List--TxtColStock" text="Stock"/>
+                    </Column>
+
+                    <Column id="demo.productapp.productapp::List--ColDetails">
+                        <Text id="demo.productapp.productapp::List--TxtColDetails"/>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="demo.productapp.productapp::List--RowTemplate">
+                        <cells>
+                            <Text id="demo.productapp.productapp::List--TxtID" text="{data>id}"/>
+                            <Text id="demo.productapp.productapp::List--TxtName" text="{data>name}"/>
+                            <Text id="demo.productapp.productapp::List--TxtPrice" text="{data>price}"/>
+                            <Text id="demo.productapp.productapp::List--TxtStock" text="{data>stock}"/>
+
+                            <Button
+                                id="demo.productapp.productapp::List--BtnRowDetails"
+                                text="View"
+                                type="Transparent"
+                                press=".onRowDetails"/> 
+                        </cells>
+                    </ColumnListItem>
+                </items>
+                
+
+            </Table>
+        </content>
+
+    </Page>
+</mvc:View>
