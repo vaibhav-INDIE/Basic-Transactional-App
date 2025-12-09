@@ -10,6 +10,18 @@ sap.ui.define([
     },
 
     init: function () {
+
+      var oAuthModel = new sap.ui.model.json.JSONModel({
+        isAuthenticated: false,
+        token: null,
+        user: null
+
+
+      });
+      this.setModel(oAuthModel, "auth");
+
+
+
       UIComponent.prototype.init.apply(this, arguments);
       var oData = {
         products: [
@@ -20,8 +32,6 @@ sap.ui.define([
       };
       var oModel = new JSONModel(oData);
       this.setModel(oModel, "data");
-
-      // init router
       this.getRouter().initialize();
     }
   });

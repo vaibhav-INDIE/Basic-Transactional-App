@@ -1,0 +1,41 @@
+<mvc:View
+    controllerName="demo.productapp.productapp.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+
+    <Page id="_IDGenPage1" title="Login">
+        <content>
+            <l:Grid id="_IDGenGrid"
+                defaultSpan="L4 M6 S12"
+                position="Center">
+                <l:content>
+                    <VBox id="_IDGenVBox" class="sapUiLargeMargin">
+                        <Title id="_IDGenTitle" text="Please sign in" level="H2"/>
+
+                        <Label id="_IDGenLabel" text="Username" labelFor="usernameInput"/>
+                        <Input
+                            id="usernameInput"
+                            value="{/login/username}"
+                            placeholder="Enter username"
+                            width="100%"/>
+
+                        <Label id="_IDGenLabel1" text="Password" labelFor="passwordInput"/>
+                        <Input
+                            id="passwordInput"
+                            type="Password"
+                            value="{/login/password}"
+                            placeholder="Enter password"
+                            width="100%"/>
+
+                        <Button id="_IDGenButton1"
+                            text="Login"
+                            type="Emphasized"
+                            class="sapUiSmallMarginTop"
+                            press=".onLoginPress"/>
+                    </VBox>
+                </l:content>
+            </l:Grid>
+        </content>
+    </Page>
+</mvc:View>

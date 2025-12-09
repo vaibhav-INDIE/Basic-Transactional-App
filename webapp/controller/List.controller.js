@@ -81,6 +81,11 @@ sap.ui.define([
             var sIndex = sPath.split("/")[2];
 
             this._getRouter().navTo("Detail", { index: sIndex });
+        },
+
+
+        logoff: function (oEvent){
+            this._getRouter().navTo("Login");
         }
     });
 });

@@ -72,9 +72,15 @@
         "async": true
       },
       "routes": [
+
+        {
+          "pattern": "",
+          "name": "Login",
+          "target": "Login"
+        },
         {
           "name": "List",
-          "pattern": "",
+          "pattern": "login",
           "target": "List"
         },
         {
@@ -89,6 +95,13 @@
         }
       ],
       "targets": {
+
+        "Login": {
+          "viewType": "XML",
+          "viewName": "Login",
+          "viewId": "Login",
+          "title": "Login"
+        },
         "List": {
           "viewName": "List"
         },
