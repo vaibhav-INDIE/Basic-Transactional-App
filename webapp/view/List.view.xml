@@ -23,18 +23,18 @@
                 id="demo.productapp.productapp::List--BtnAdd"
                 text="Add Product"
                 type="Emphasized"
-                press=".onAdd"/>
+                press="onAdd"/>
 
             <Button
                 id="demo.productapp.productapp::List--BtnDelete"
                 text="Delete Selected"
                 type="Negative"
-                press=".onDelete"/>
+                press="onDelete"/>
 
             <Button
                 id="demo.productapp.productapp::List--Logout"
                 text="Logout"
-                press=".logoff"/>
+                press="logoff"/>
 
         </headerContent>
 
@@ -42,43 +42,29 @@
             <Table
                 id="demo.productapp.productapp::List--Table"
                 mode="MultiSelect"
-                items="{path: 'data>/products'}">
+                items="{/Products}">
 
                 <columns>
-                    <Column id="demo.productapp.productapp::List--ColID">
-                        <Text id="_IDGenText1" text="ID"/>
-                    </Column>
-
-                    <Column id="demo.productapp.productapp::List--ColName">
-                        <Text id="_IDGenText2" text="Name"/>
-                    </Column>
-
-                    <Column id="demo.productapp.productapp::List--ColPrice">
-                        <Text id="_IDGenText3" text="Price"/>
-                    </Column>
-
-                    <Column id="demo.productapp.productapp::List--ColStock">
-                        <Text id="_IDGenText4" text="Stock"/>
-                    </Column>
-
-                    <Column id="demo.productapp.productapp::List--ColDetails">
-                        <Text id="_IDGenText5" text=""/>
-                    </Column>
+                    <Column id="_IDGenColumn1"><Text id="_IDGenText"  text="Product ID"/></Column>
+                    <Column id="_IDGenColumn2"><Text id="_IDGenText1" text="Name"/></Column>
+                    <Column id="_IDGenColumn3"><Text id="_IDGenText2" text="Price"/></Column>
+                    <Column id="_IDGenColumn4"><Text id="_IDGenText3" text="Stock"/></Column>
+                    <Column id="_IDGenColumn5"><Text id="_IDGenText4" text=""/></Column>
                 </columns>
 
                 <items>
                     <ColumnListItem id="demo.productapp.productapp::List--RowTemplate">
                         <cells>
-                            <Text id="_IDGenText6" text="{data>id}"/>
-                            <Text id="_IDGenText7" text="{data>name}"/>
-                            <Text id="_IDGenText8" text="{data>price}"/>
-                            <Text id="_IDGenText9" text="{data>stock}"/>
+                            <Text id="_IDGenText5" text="{ProductID}"/>
+                            <Text id="_IDGenText6" text="{Name}"/>
+                            <Text id="_IDGenText7" text="{Price}"/>
+                            <Text id="_IDGenText8" text="{Stock}"/>
 
                             <Button
                                 id="demo.productapp.productapp::List--BtnRowDetails"
                                 text="View"
                                 type="Transparent"
-                                press=".onRowDetails"/>
+                                press="onRowDetails"/>
                         </cells>
                     </ColumnListItem>
                 </items>

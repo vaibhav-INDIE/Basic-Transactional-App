@@ -8,7 +8,7 @@
         id="demo.productapp.productapp::Create--Page"
         title="Create Product"
         showNavButton="true"
-        navButtonPress=".onCancel">
+        navButtonPress="onCancel">
 
         <content>
             <form:SimpleForm
@@ -45,9 +45,10 @@
                     id="demo.productapp.productapp::Create--BtnSave"
                     text="Save"
                     type="Emphasized"
-                    press=".onSave"/>
+                    press="onSave"/>
             </Toolbar>
         </footer>
 
     </Page>
+
 </mvc:View>

@@ -14,6 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.19.6",
       "toolsId": "b430706a-603b-43d3-b170-931082ac61a5"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/z_ui_products_o4/srvd/sap/z_ui_products/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
     }
   },
   "sap.ui": {
@@ -40,7 +51,6 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ui.layout": {}
-
       }
     },
     "contentDensities": {
@@ -52,6 +62,15 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "demo.productapp.productapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
         }
       }
     },
@@ -72,7 +91,6 @@
         "async": true
       },
       "routes": [
-
         {
           "pattern": "",
           "name": "Login",
@@ -95,7 +113,6 @@
         }
       ],
       "targets": {
-
         "Login": {
           "viewType": "XML",
           "viewName": "Login",
@@ -108,12 +125,11 @@
         "Create": {
           "viewName": "Create"
         },
-        "Detail": { 
-          "viewName": "Detail" 
+        "Detail": {
+          "viewName": "Detail"
         }
       }
     },
-
     "rootView": {
       "viewName": "demo.productapp.productapp.view.App",
       "type": "XML",
